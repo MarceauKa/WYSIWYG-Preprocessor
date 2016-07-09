@@ -1,9 +1,10 @@
 {
     "name": "akibatech/wysiwygpreprocessor",
     "description": "A PHP library for processing wysiwyg/textarea output.",
+    "keywords": ["plugin", "wysiwyg", "processor", "link", "tags", "bbcode", "textarea", "path"],
     "type": "plugin",
     "license": "MIT",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "authors": [
         {
             "name": "MarceauKa",
