@@ -19,7 +19,7 @@ For the given textarea,
 $textarea = "Check my website http://website.com. Keep in touch at hello@website.com !";
 ```
 
-We want to transform the link and the mail address to HTML tags
+We want to transform the link and the email adress to HTML tags
 
 ```php  
 use Akibatech\Wysiwyg\Processor;  
@@ -37,7 +37,7 @@ echo $processor->getOutput();
 Results in :  
 
 ```html
-Check my website <a href="">http://website.com</a>. Keep in touch at <a href="mailto:hello@website.com">hello@website.com</a> !
+Check my website <a href="http://website.com">http://website.com</a>. Keep in touch at <a href="mailto:hello@website.com">hello@website.com</a> !
 ```
 
 ## Customizing modifiers
@@ -46,16 +46,19 @@ Modifiers are easily customizable.
 Imagine you want to target all links to a new page or adding to it a custom class.  
 
 ```php  
-$textarea = 'Check out my new site : personnal-website.com';
+$textarea = 'Check out my new site: personnal-website.com';
 
 $modifier = new Akibatech\Wysiwyg\Modifier\UrlToLink();
+
 $modifier->setOptions([
     'class' => 'custom-link',
     'target' => '_blank'
 ])
 
 $processor = new Akibatech\Wysiwyg\Processor();
-$processor->addModifier($modifier)->process($textarea);
+
+$processor->addModifier($modifier)
+          ->process($textarea);
 
 echo $processor->getOutput();
 ```
@@ -63,7 +66,7 @@ echo $processor->getOutput();
 Results in :  
 
 ```html
-Check out my new site : <a href="personnal-website.com" class="custom-link" target="_blank">personnal-website.com</a>
+Check out my new site: <a href="personnal-website.com" class="custom-link" target="_blank">personnal-website.com</a>
 ```
 
 ## Modifiers
@@ -71,12 +74,13 @@ Check out my new site : <a href="personnal-website.com" class="custom-link" targ
 ### BBCode
 
 Class : **Akibatech\Wysiwyg\Modifier\BbCode**  
-Description : Apply a basic BBCode parsing on your content.  
+Description : Apply a basic BBCode to enhance your content.  
 
 Example input : ```[b]Hello[/b]```  
 Example output : ```<strong>Hello</strong>```  
 
 Options :  
+Defaults tags are: [b] for <strong>, [i] for <em>, [u] for <u> and [link url=""] for <a>.  
 Options are wilcard BBCode tag. Key is the wanted BBCode tag and option is the HTML replacement.  
 ```php  
 [  
