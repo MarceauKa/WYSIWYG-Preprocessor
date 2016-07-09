@@ -2,6 +2,7 @@
 
 namespace Tests;
 
+use Akibatech\Wysiwyg\Modifier\AbsolutePath;
 use Akibatech\Wysiwyg\Modifier\BbCode;
 use Akibatech\Wysiwyg\Modifier\MailToLink;
 use Akibatech\Wysiwyg\Modifier\NlToBr;
@@ -153,6 +154,32 @@ class DefaultModifiersTest extends TestCase
 
         $processor = new Processor();
         $processor->addModifier(new ParseVariables(['accept' => ['name' => 'Joe'], 'in' => '#']));
+        $processor->process($input);
+
+        $this->assertEquals($processor->getOutput(), $expected);
+    }
+
+    /**
+     * @test
+     */
+    public function testAbsolutePath()
+    {
+        // Default options
+        $input = '<a href="../bonjour.html"></a> <img src=\'../../files/sea.jpg\' />';
+        $expected = '<a href="/bonjour.html"></a> <img src="/files/sea.jpg" />';
+
+        $processor = new Processor();
+        $processor->addModifier(new AbsolutePath());
+        $processor->process($input);
+
+        $this->assertEquals($processor->getOutput(), $expected);
+
+        // Custom prefix
+        $input = '<a href="../bonjour.html"></a> <img src=\'../../files/sea.jpg\' />';
+        $expected = '<a href="http://site.com/bonjour.html"></a> <img src="http://site.com/files/sea.jpg" />';
+
+        $processor = new Processor();
+        $processor->addModifier(new AbsolutePath(['prefix' => 'http://site.com/']));
         $processor->process($input);
 
         $this->assertEquals($processor->getOutput(), $expected);

@@ -113,6 +113,23 @@ You can specify the delimiter and the accepted variables.
 ]  
 ```
 
+### Absolute Path
+
+Class : **Akibatech\Wysiwyg\Modifier\AbsolutePath**  
+Description : Will replace "href" and "src" attributes with absolute values.  
+
+Example input : ```<img src="../../files/sea.jpg" />```  
+Example output : ```<img src="/files/sea.jpg" />```  
+
+Options :  
+You can specify a custom prefix for your paths.
+```php  
+[  
+    // Custom prefix. Default is '/'.  
+    'prefix' => 'http://site.com/', // <img src="http://site.com/files/sea.jpg" />
+]  
+```
+
 ### Mail to Link
 
 Class : **Akibatech\Wysiwyg\Modifier\MailToLink**  
