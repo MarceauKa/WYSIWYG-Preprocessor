@@ -1,0 +1,23 @@
+{
+    "name": "akibatech/wysiwygpreprocessor",
+    "description": "A PHP library for processing wysiwyg/textarea output.",
+    "type": "plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "MarceauKa",
+            "email": "marceau@casals.fr"
+        }
+    ],
+    "autoload": {
+      "psr-4": { "Akibatech\\Wysiwyg\\": "src/Wysiwyg/" }
+    },
+    "autoload-dev": {
+      "psr-4": { "Tests\\": "tests/"  }
+    },
+    "minimum-stability": "dev",
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "5.4.*"
+    }
+}

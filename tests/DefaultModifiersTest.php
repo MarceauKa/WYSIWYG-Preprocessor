@@ -1,0 +1,133 @@
+<?php
+
+namespace Tests;
+
+use Akibatech\Wysiwyg\Modifier\BbCode;
+use Akibatech\Wysiwyg\Modifier\MailToLink;
+use Akibatech\Wysiwyg\Modifier\NlToBr;
+use Akibatech\Wysiwyg\Modifier\StripTags;
+use Akibatech\Wysiwyg\Modifier\UrlToLink;
+use PHPUnit\Framework\TestCase;
+use Akibatech\Wysiwyg\Processor;
+
+class DefaultModifiersTest extends TestCase
+{
+    /**
+     * @test
+     */
+    public function testBbCodeModifier()
+    {
+        // Default options
+        $input = '[b]Hello[/b]';
+        $expected = '<strong>Hello</strong>';
+
+        $processor = new Processor();
+        $processor->addModifier(new BbCode());
+        $processor->process($input);
+
+        $this->assertEquals($processor->getOutput(), $expected);
+
+        // Custom options
+        $input = '[strike]Hello[/strike]';
+        $expected = '<span style="text-decoration: line-through">Hello</span>';
+
+        $processor = new Processor();
+        $processor->addModifier(new BbCode(['strike' => '<span style="text-decoration: line-through">$1</span>']));
+        $processor->process($input);
+
+        $this->assertEquals($processor->getOutput(), $expected);
+    }
+
+    /**
+     * @test
+     */
+    public function testMailToLinkModifier()
+    {
+        $input = 'hi@company.com';
+        $expected = '<a href="mailto:hi@company.com">hi@company.com</a>';
+
+        $processor = new Processor();
+        $processor->addModifier(new MailToLink());
+        $processor->process($input);
+
+        $this->assertEquals($processor->getOutput(), $expected);
+    }
+
+    /**
+     * @test
+     */
+    public function testNlToBrModifier()
+    {
+        // Default options
+        $input = "a\nb";
+        $expected = 'a<br>b';
+
+        $processor = new Processor();
+        $processor->addModifier(new NlToBr());
+        $processor->process($input);
+
+        $this->assertEquals($processor->getOutput(), $expected);
+
+        // Custom options
+        $input = "a\rb";
+        $expected = 'a<br />b';
+
+        $processor = new Processor();
+        $processor->addModifier(new NlToBr(['search' => "\r", 'replace' => "<br />"]));
+        $processor->process($input);
+
+        $this->assertEquals($processor->getOutput(), $expected);
+    }
+
+    /**
+     * @test
+     */
+    public function testStripTags()
+    {
+        // Default options
+        $input = "<em>Hello</em>";
+        $expected = 'Hello';
+
+        $processor = new Processor();
+        $processor->addModifier(new StripTags());
+        $processor->process($input);
+
+        $this->assertEquals($processor->getOutput(), $expected);
+
+        // Custom options
+        $input = "<em>Hello</em>";
+        $expected = '<em>Hello</em>';
+
+        $processor = new Processor();
+        $processor->addModifier(new StripTags(['allow' => '<em>']));
+        $processor->process($input);
+
+        $this->assertEquals($processor->getOutput(), $expected);
+    }
+
+    /**
+     * @test
+     */
+    public function testUrlToLink()
+    {
+        // Default options
+        $input = "https://www.github.com";
+        $expected = '<a href="https://www.github.com">https://www.github.com</a>';
+
+        $processor = new Processor();
+        $processor->addModifier(new UrlToLink());
+        $processor->process($input);
+
+        $this->assertEquals($processor->getOutput(), $expected);
+
+        // Custom options
+        $input = "https://www.github.com";
+        $expected = '<a href="https://www.github.com" class="link" target="_blank">https://www.github.com</a>';
+
+        $processor = new Processor();
+        $processor->addModifier(new UrlToLink(['class' => 'link', 'target' => '_blank']));
+        $processor->process($input);
+
+        $this->assertEquals($processor->getOutput(), $expected);
+    }
+}
