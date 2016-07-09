@@ -178,6 +178,7 @@ Make sure you have composer dev dependencies installed and type :
 vendor/bin/phpunit
 ```
 
-## Licence
+## Author and Licence
 
-[MIT](https://en.wikipedia.org/wiki/MIT_License)
+Author: [Marceau Casals](https://marceau.casals.fr)
+Licence: [MIT](https://en.wikipedia.org/wiki/MIT_License)
