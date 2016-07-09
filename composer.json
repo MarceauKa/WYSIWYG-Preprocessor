@@ -3,7 +3,7 @@
     "description": "A PHP library for processing wysiwyg/textarea output.",
     "type": "plugin",
     "license": "MIT",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "authors": [
         {
             "name": "MarceauKa",
