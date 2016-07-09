@@ -80,7 +80,7 @@ Example input : ```[b]Hello[/b]```
 Example output : ```<strong>Hello</strong>```  
 
 Options :  
-Defaults tags are: [b] for <strong>, [i] for <em>, [u] for <u> and [link url=""] for <a>.  
+Defaults tags are: b, i, u, link.  
 Options are wilcard BBCode tag. Key is the wanted BBCode tag and option is the HTML replacement.  
 ```php  
 [  
