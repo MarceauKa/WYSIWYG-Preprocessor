@@ -91,6 +91,28 @@ Options are wilcard BBCode tag. Key is the wanted BBCode tag and option is the H
 ]  
 ```
 
+### Parse Variables
+
+Class : **Akibatech\Wysiwyg\Modifier\ParseVariables**  
+Description : Replace a preset of variables.  
+
+Example input : ```Hello %name%!```  
+Example output : ```Hello John!```  
+
+Options :  
+You can specify the delimiter and the accepted variables.
+```php  
+[  
+    // My custom delimiter. Vars are parsed in this delimiter. Default is "%".  
+    'in' => '%',  
+    // Accepted vars
+    'accept' => [
+        'name' => 'Joe', // %name% => Joe
+        'email' => 'email@example.com' // %email% => email@example.com
+    ]
+]  
+```
+
 ### Mail to Link
 
 Class : **Akibatech\Wysiwyg\Modifier\MailToLink**  

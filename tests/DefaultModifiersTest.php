@@ -5,6 +5,7 @@ namespace Tests;
 use Akibatech\Wysiwyg\Modifier\BbCode;
 use Akibatech\Wysiwyg\Modifier\MailToLink;
 use Akibatech\Wysiwyg\Modifier\NlToBr;
+use Akibatech\Wysiwyg\Modifier\ParseVariables;
 use Akibatech\Wysiwyg\Modifier\StripTags;
 use Akibatech\Wysiwyg\Modifier\UrlToLink;
 use PHPUnit\Framework\TestCase;
@@ -126,6 +127,32 @@ class DefaultModifiersTest extends TestCase
 
         $processor = new Processor();
         $processor->addModifier(new UrlToLink(['class' => 'link', 'target' => '_blank']));
+        $processor->process($input);
+
+        $this->assertEquals($processor->getOutput(), $expected);
+    }
+
+    /**
+     * @test
+     */
+    public function testParseVariables()
+    {
+        // Default options
+        $input = "Hello %name%, my email is %email%";
+        $expected = 'Hello Joe, my email is mail@example.com';
+
+        $processor = new Processor();
+        $processor->addModifier(new ParseVariables(['accept' => ['name' => 'Joe', 'email' => 'mail@example.com']]));
+        $processor->process($input);
+
+        $this->assertEquals($processor->getOutput(), $expected);
+
+        // Custom delimiter
+        $input = "Hello #name#!";
+        $expected = 'Hello Joe!';
+
+        $processor = new Processor();
+        $processor->addModifier(new ParseVariables(['accept' => ['name' => 'Joe'], 'in' => '#']));
         $processor->process($input);
 
         $this->assertEquals($processor->getOutput(), $expected);
