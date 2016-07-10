@@ -18,7 +18,7 @@ class BbCode extends AbstractModifier
      */
     public function handle($input)
     {
-        $table = $this->getMatchesTable();
+        $table  = $this->getMatchesTable();
         $output = $input;
 
         foreach ($table as $match)
@@ -47,29 +47,29 @@ class BbCode extends AbstractModifier
             if (is_null($pattern))
             {
                 $replace = '$1';
-                $options = [];
+                $extra   = false;
             }
             else if (is_array($pattern))
             {
                 $replace = $pattern[0];
-                $options = $pattern[1];
+                $extra   = true;
             }
             else
             {
                 $replace = $pattern;
-                $options = [];
+                $extra   = false;
             }
 
-            $pattern = '/\[\s*%s%s\s*\](.*)\[\/\s*%s\s*\]/is';
-            $extra   = '';
+            $pattern = '/\[\s*%s\s*%s\s*\](.*)\[\/\s*%s\s*\]/is';
+            $option  = '';
 
-            foreach ($options as $key => $option)
+            if ($extra)
             {
-                $extra .= '\s*'.$option.'=[\'|\"](.*)[\'|\"]\s*';
+                $option = '=?(.*)?';
             }
 
             $patterns[] = [
-                sprintf($pattern, $tag, $extra, $tag),
+                sprintf($pattern, $tag, $option, $tag),
                 $replace
             ];
         }
@@ -85,10 +85,17 @@ class BbCode extends AbstractModifier
     public function defaultOptions()
     {
         return [
-            'b'    => '<strong>$1</strong>',
-            'i'    => '<em>$1</em>',
-            'u'    => '<u>$1</u>',
-            'link' => ['<a href="$1">$2</a>', ['url']],
+            'b'      => '<strong>$1</strong>',
+            'i'      => '<em>$1</em>',
+            'u'      => '<u>$1</u>',
+            'left'   => '<p style="text-align: left">$1</p>',
+            'right'  => '<p style="text-align: right">$1</p>',
+            'center' => '<p style="text-align: center">$1</p>',
+            'color'  => ['<span style="color: $1">$2</span>'],
+            'quote'  => '<blockquote>$1</blockquote>',
+            'size'   => ['<span style="font-size: $1px">$2</span>'],
+            'link'   => ['<a href="$1">$2</a>'],
+            'img'    => '<a href="$1"><img src="$1" /></a>'
         ];
     }
 

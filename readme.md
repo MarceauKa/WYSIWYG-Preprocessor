@@ -80,8 +80,9 @@ Example input : ```[b]Hello[/b]```
 Example output : ```<strong>Hello</strong>```  
 
 Options :  
-Defaults tags are: b, i, u, link.  
+Defaults tags are: b, i, u, left, right, center, quote, link, img, size and color.  
 Options are wilcard BBCode tag. Key is the wanted BBCode tag and option is the HTML replacement.  
+If pattern is given as array, it can access Tag option like ```[link=http://github.com]my profile[/link]``` as ```<a href="$1">$2</a>```.   
 ```php  
 [  
     // New tag called [yellow]text in yellow[/yellow]  

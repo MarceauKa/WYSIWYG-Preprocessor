@@ -20,8 +20,8 @@ class DefaultModifiersTest extends TestCase
     public function testBbCodeModifier()
     {
         // Default options
-        $input = '[b]Hello[/b]';
-        $expected = '<strong>Hello</strong>';
+        $input = '[b]Hello[/b] [color=red]world[/color]';
+        $expected = '<strong>Hello</strong> <span style="color: red">world</span>';
 
         $processor = new Processor();
         $processor->addModifier(new BbCode());
