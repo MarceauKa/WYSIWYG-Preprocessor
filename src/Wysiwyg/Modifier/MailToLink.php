@@ -53,7 +53,10 @@ class MailToLink extends AbstractModifier
      */
     public function defaultOptions()
     {
-        return [];
+        return [
+            // Replace @ by an other char. Default to false.
+            'at' => false // 'Wanted symbol or false to desactivate.
+        ];
     }
 
     //-------------------------------------------------------------------------
