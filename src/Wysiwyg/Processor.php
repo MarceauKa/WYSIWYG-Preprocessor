@@ -5,7 +5,7 @@ namespace Akibatech\Wysiwyg;
 class Processor
 {
     /**
-     * @var ModifierInterface[]
+     * @var ModifierInterface[]|callable[]
      */
     protected $modifiers;
 
@@ -67,12 +67,19 @@ class Processor
     /**
      * Add a new modifier.
      *
-     * @param   ModifierInterface $modifier
+     * @param   ModifierInterface|callable $modifier
      * @return  self
      */
-    public function addModifier(ModifierInterface $modifier)
+    public function addModifier($modifier)
     {
-        $this->modifiers[] = $modifier;
+        if (is_callable($modifier) OR $modifier instanceof ModifierInterface)
+        {
+            $this->modifiers[] = $modifier;
+        }
+        else
+        {
+            throw new \InvalidArgumentException('Modifier must be callable or an instance of Modifier interface.');
+        }
 
         return $this;
     }
@@ -135,7 +142,16 @@ class Processor
         // Loop over modifiers and handle them.
         foreach ($this->modifiers as $modifier)
         {
-            $this->output = $modifier->handle($this->output);
+            // Modifier implements ModifierInterface
+            if ($modifier instanceof ModifierInterface)
+            {
+                $this->output = $modifier->handle($this->output);
+            }
+            // Modifier is callable
+            else if (is_callable($modifier))
+            {
+                $this->output = $modifier($this->output);
+            }
         }
 
         return $this;

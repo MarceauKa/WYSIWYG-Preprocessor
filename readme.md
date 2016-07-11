@@ -228,6 +228,18 @@ You're also encouraged to extends **AbstractModifier** to access common methods 
 Basically, a modifier receive the input to transform through a public method **handle($input)**.  
 Options are handled by a public method **defaultOptions()** returning an array of available options. And in your modifier body, you can access these options with the instance attribute **options**.
 
+### Callable modifier
+
+You also have the possibility to add a dynamic modifier.  
+The method "addModifier" also accepts a callback function.  
+
+Example :  
+```php
+$processor->addModifier(function($input) {
+    return str_rot13('hello'); // Will return "uryyb"
+});
+```
+
 ## Unit Tests
 
 WYSIWYG Preprocessor is tested with PHPUnit.  
