@@ -150,6 +150,17 @@ The list and the replacement.
 ]  
 ```
 
+### Empty Paragraphs
+
+Class : **Akibatech\Wysiwyg\Modifier\EmptyParagraphs**  
+Description : Delete empty paragraphs from your content.  
+
+Example input : ```<p></p><p>Hello</p><p>&nbsp;</p>```  
+Example output : ```<p>Hello</p>```  
+
+Options :  
+None.  
+
 ### Mail to Link
 
 Class : **Akibatech\Wysiwyg\Modifier\MailToLink**  

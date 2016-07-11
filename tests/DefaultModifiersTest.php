@@ -4,6 +4,7 @@ namespace Tests;
 
 use Akibatech\Wysiwyg\Modifier\AbsolutePath;
 use Akibatech\Wysiwyg\Modifier\BbCode;
+use Akibatech\Wysiwyg\Modifier\EmptyParagraphs;
 use Akibatech\Wysiwyg\Modifier\MailToLink;
 use Akibatech\Wysiwyg\Modifier\NlToBr;
 use Akibatech\Wysiwyg\Modifier\ParseVariables;
@@ -230,6 +231,22 @@ class DefaultModifiersTest extends TestCase
 
         $processor = new Processor();
         $processor->addModifier($modifier);
+        $processor->process($input);
+
+        $this->assertEquals($processor->getOutput(), $expected);
+    }
+
+    /**
+     * @test
+     */
+    public function testEmptyParagraphs()
+    {
+        // Default options
+        $input    = '<p>  </p><p> &nbsp; </p><p>&nbsp</p><p>Hello world</p>';
+        $expected = '<p>Hello world</p>';
+
+        $processor = new Processor();
+        $processor->addModifier(new EmptyParagraphs());
         $processor->process($input);
 
         $this->assertEquals($processor->getOutput(), $expected);
