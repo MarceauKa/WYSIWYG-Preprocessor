@@ -9,6 +9,7 @@ use Akibatech\Wysiwyg\Modifier\NlToBr;
 use Akibatech\Wysiwyg\Modifier\ParseVariables;
 use Akibatech\Wysiwyg\Modifier\StripTags;
 use Akibatech\Wysiwyg\Modifier\UrlToLink;
+use Akibatech\Wysiwyg\Modifier\WordsFilter;
 use PHPUnit\Framework\TestCase;
 use Akibatech\Wysiwyg\Processor;
 
@@ -180,6 +181,25 @@ class DefaultModifiersTest extends TestCase
 
         $processor = new Processor();
         $processor->addModifier(new AbsolutePath(['prefix' => 'http://site.com/']));
+        $processor->process($input);
+
+        $this->assertEquals($processor->getOutput(), $expected);
+    }
+
+    /**
+     * @test
+     */
+    public function testWordsFilter()
+    {
+        // Default options
+        $input = 'Cunt!';
+        $expected = '[censored]!';
+
+        $modifier = new WordsFilter();
+        $modifier->withWords(['cunt']);
+
+        $processor = new Processor();
+        $processor->addModifier($modifier);
         $processor->process($input);
 
         $this->assertEquals($processor->getOutput(), $expected);

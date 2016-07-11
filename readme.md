@@ -131,6 +131,25 @@ You can specify a custom prefix for your paths.
 ]  
 ```
 
+### Words Filter
+
+Class : **Akibatech\Wysiwyg\Modifier\WordsFilter**  
+Description : Remove a words list from a text. Act as a censorship system.  
+
+Example input : ```Cunt!```  
+Example output : ```[censored]!```  
+
+Options :  
+The list and the replacement.
+```php  
+[  
+    // Words list as an array.  
+    'words' => ['word1', 'word2'], // No defaults words.
+    // Replacement
+    'replace' => '[censored]' // Wanted replacement, default to [censored]
+]  
+```
+
 ### Mail to Link
 
 Class : **Akibatech\Wysiwyg\Modifier\MailToLink**  
