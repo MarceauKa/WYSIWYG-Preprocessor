@@ -11,8 +11,6 @@ use Akibatech\Wysiwyg\AbstractModifier;
  */
 class AbsolutePath extends AbstractModifier
 {
-    //-------------------------------------------------------------------------
-
     /**
      * {@inheritdoc}
      */
@@ -26,8 +24,6 @@ class AbsolutePath extends AbstractModifier
         return $output;
     }
 
-    //-------------------------------------------------------------------------
-
     /**
      * {@inheritdoc}
      */
@@ -37,6 +33,4 @@ class AbsolutePath extends AbstractModifier
             'prefix' => null
         ];
     }
-
-    //-------------------------------------------------------------------------
 }

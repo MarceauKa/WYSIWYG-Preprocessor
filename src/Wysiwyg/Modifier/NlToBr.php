@@ -11,8 +11,6 @@ use Akibatech\Wysiwyg\AbstractModifier;
  */
 class NlToBr extends AbstractModifier
 {
-    //-------------------------------------------------------------------------
-
     /**
      * {@inheritdoc}
      */
@@ -22,8 +20,6 @@ class NlToBr extends AbstractModifier
 
         return $output;
     }
-
-    //-------------------------------------------------------------------------
 
     /**
      * {@inheritdoc}
@@ -35,6 +31,4 @@ class NlToBr extends AbstractModifier
             'replace' => '<br>'
         ];
     }
-
-    //-------------------------------------------------------------------------
 }

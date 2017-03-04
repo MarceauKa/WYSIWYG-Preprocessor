@@ -11,8 +11,6 @@ use Akibatech\Wysiwyg\AbstractModifier;
  */
 class ParseVariables extends AbstractModifier
 {
-    //-------------------------------------------------------------------------
-
     /**
      * {@inheritdoc}
      */
@@ -38,8 +36,6 @@ class ParseVariables extends AbstractModifier
         return $output;
     }
 
-    //-------------------------------------------------------------------------
-
     /**
      * Set variables.
      * Ex: [
@@ -55,8 +51,6 @@ class ParseVariables extends AbstractModifier
         $this->options['accept'] = $vars;
     }
 
-    //-------------------------------------------------------------------------
-
     /**
      * Returns configured variables.
      *
@@ -67,8 +61,6 @@ class ParseVariables extends AbstractModifier
     {
         return $this->options['accept'];
     }
-
-    //-------------------------------------------------------------------------
 
     /**
      * {@inheritdoc}
@@ -82,6 +74,4 @@ class ParseVariables extends AbstractModifier
             'in' => '%'
         ];
     }
-
-    //-------------------------------------------------------------------------
 }

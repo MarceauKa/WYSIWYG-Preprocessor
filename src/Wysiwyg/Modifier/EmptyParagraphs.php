@@ -11,8 +11,6 @@ use Akibatech\Wysiwyg\AbstractModifier;
  */
 class EmptyParagraphs extends AbstractModifier
 {
-    //-------------------------------------------------------------------------
-
     /**
      * {@inheritdoc}
      */
@@ -22,6 +20,4 @@ class EmptyParagraphs extends AbstractModifier
 
         return $output;
     }
-
-    //-------------------------------------------------------------------------
 }

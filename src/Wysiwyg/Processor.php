@@ -19,8 +19,6 @@ class Processor
      */
     protected $output = '';
 
-    //-------------------------------------------------------------------------
-
     /**
      * Execute the processing.
      *
@@ -36,8 +34,6 @@ class Processor
         return $this;
     }
 
-    //-------------------------------------------------------------------------
-
     /**
      * Get the Processor input.
      *
@@ -49,8 +45,6 @@ class Processor
         return $this->input;
     }
 
-    //-------------------------------------------------------------------------
-
     /**
      * Get the processed input.
      *
@@ -61,8 +55,6 @@ class Processor
     {
         return $this->output;
     }
-
-    //-------------------------------------------------------------------------
 
     /**
      * Add a new modifier.
@@ -83,8 +75,6 @@ class Processor
 
         return $this;
     }
-
-    //-------------------------------------------------------------------------
 
     /**
      * A many modifiers.
@@ -110,8 +100,6 @@ class Processor
         return $this;
     }
 
-    //-------------------------------------------------------------------------
-
     /**
      * Access modifiers list.
      *
@@ -122,8 +110,6 @@ class Processor
     {
         return $this->modifiers;
     }
-
-    //-------------------------------------------------------------------------
 
     /**
      * Apply all modifiers on the input.
@@ -156,6 +142,4 @@ class Processor
 
         return $this;
     }
-
-    //-------------------------------------------------------------------------
 }

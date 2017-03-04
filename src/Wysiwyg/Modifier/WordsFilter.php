@@ -11,8 +11,6 @@ use Akibatech\Wysiwyg\AbstractModifier;
  */
 class WordsFilter extends AbstractModifier
 {
-    //-------------------------------------------------------------------------
-
     /**
      * {@inheritdoc}
      */
@@ -29,8 +27,6 @@ class WordsFilter extends AbstractModifier
         return $output;
     }
 
-    //-------------------------------------------------------------------------
-
     /**
      * Define a list of banned words.
      *
@@ -44,8 +40,6 @@ class WordsFilter extends AbstractModifier
         return $this;
     }
 
-    //-------------------------------------------------------------------------
-
     /**
      * {@inheritdoc}
      */
@@ -58,6 +52,4 @@ class WordsFilter extends AbstractModifier
             'replace' => '[censored]',
         ];
     }
-
-    //-------------------------------------------------------------------------
 }

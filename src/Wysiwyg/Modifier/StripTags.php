@@ -11,8 +11,6 @@ use Akibatech\Wysiwyg\AbstractModifier;
  */
 class StripTags extends AbstractModifier
 {
-    //-------------------------------------------------------------------------
-
     /**
      * {@inheritdoc}
      */
@@ -23,8 +21,6 @@ class StripTags extends AbstractModifier
         return $output;
     }
 
-    //-------------------------------------------------------------------------
-
     /**
      * {@inheritdoc}
      */
@@ -34,6 +30,4 @@ class StripTags extends AbstractModifier
             'allow' => null,
         ];
     }
-
-    //-------------------------------------------------------------------------
 }

@@ -11,8 +11,6 @@ use Akibatech\Wysiwyg\AbstractModifier;
  */
 class MailToLink extends AbstractModifier
 {
-    //-------------------------------------------------------------------------
-
     /**
      * {@inheritdoc}
      */
@@ -27,8 +25,6 @@ class MailToLink extends AbstractModifier
 
         return $output;
     }
-
-    //-------------------------------------------------------------------------
 
     /**
      * Build the link tag template.
@@ -46,8 +42,6 @@ class MailToLink extends AbstractModifier
         ]);
     }
 
-    //-------------------------------------------------------------------------
-
     /**
      * {@inheritdoc}
      */
@@ -58,6 +52,4 @@ class MailToLink extends AbstractModifier
             'at' => false // 'Wanted symbol or false to desactivate.
         ];
     }
-
-    //-------------------------------------------------------------------------
 }

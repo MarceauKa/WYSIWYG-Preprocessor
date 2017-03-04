@@ -14,8 +14,6 @@ abstract class AbstractModifier implements ModifierInterface
      */
     protected $options = [];
 
-    //-------------------------------------------------------------------------
-
     /**
      * BaseModifier constructor.
      *
@@ -27,14 +25,10 @@ abstract class AbstractModifier implements ModifierInterface
         $this->setOptions($options);
     }
 
-    //-------------------------------------------------------------------------
-
     /**
      * {@inheritdoc}
      */
     abstract public function handle($input);
-
-    //-------------------------------------------------------------------------
 
     /**
      * Modifier default options.
@@ -46,8 +40,6 @@ abstract class AbstractModifier implements ModifierInterface
     {
         return [];
     }
-
-    //-------------------------------------------------------------------------
 
     /**
      * Options setter.
@@ -62,8 +54,6 @@ abstract class AbstractModifier implements ModifierInterface
         return $this;
     }
 
-    //-------------------------------------------------------------------------
-
     /**
      * Options getter.
      *
@@ -74,6 +64,4 @@ abstract class AbstractModifier implements ModifierInterface
     {
         return $this->options;
     }
-
-    //-------------------------------------------------------------------------
 }

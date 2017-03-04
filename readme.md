@@ -73,13 +73,13 @@ Check out my new site: <a href="personnal-website.com" class="custom-link" targe
 
 ### BBCode
 
-Class : **Akibatech\Wysiwyg\Modifier\BbCode**  
-Description : Apply a basic BBCode to enhance your content.  
+Class: **Akibatech\Wysiwyg\Modifier\BbCode**  
+Description: Apply a basic BBCode to enhance your content.  
 
-Example input : ```[b]Hello[/b]```  
-Example output : ```<strong>Hello</strong>```  
+Example input: ```[b]Hello[/b]```  
+Example output: ```<strong>Hello</strong>```  
 
-Options :  
+Options:  
 Defaults tags are: b, i, u, left, right, center, quote, link, img, size and color.  
 Options are wilcard BBCode tag. Key is the wanted BBCode tag and option is the HTML replacement.  
 If pattern is given as array, it can access Tag option like ```[link=http://github.com]my profile[/link]``` as ```<a href="$1">$2</a>```.   
@@ -94,13 +94,13 @@ If pattern is given as array, it can access Tag option like ```[link=http://gith
 
 ### Parse Variables
 
-Class : **Akibatech\Wysiwyg\Modifier\ParseVariables**  
-Description : Replace a preset of variables.  
+Class: **Akibatech\Wysiwyg\Modifier\ParseVariables**  
+Description: Replace a preset of variables.  
 
-Example input : ```Hello %name%!```  
-Example output : ```Hello John!```  
+Example input: ```Hello %name%!```  
+Example output: ```Hello John!```  
 
-Options :  
+Options:  
 You can specify the delimiter and the accepted variables.
 ```php  
 [  
@@ -116,13 +116,13 @@ You can specify the delimiter and the accepted variables.
 
 ### Absolute Path
 
-Class : **Akibatech\Wysiwyg\Modifier\AbsolutePath**  
-Description : Will replace "href" and "src" attributes with absolute values.  
+Class: **Akibatech\Wysiwyg\Modifier\AbsolutePath**  
+Description: Will replace "href" and "src" attributes with absolute values.  
 
-Example input : ```<img src="../../files/sea.jpg" />```  
-Example output : ```<img src="/files/sea.jpg" />```  
+Example input: ```<img src="../../files/sea.jpg" />```  
+Example output: ```<img src="/files/sea.jpg" />```  
 
-Options :  
+Options:  
 You can specify a custom prefix for your paths.
 ```php  
 [  
@@ -133,13 +133,13 @@ You can specify a custom prefix for your paths.
 
 ### Words Filter
 
-Class : **Akibatech\Wysiwyg\Modifier\WordsFilter**  
-Description : Remove a words list from a text. Act as a censorship system.  
+Class: **Akibatech\Wysiwyg\Modifier\WordsFilter**  
+Description: Remove a words list from a text. Act as a censorship system.  
 
-Example input : ```Cunt!```  
-Example output : ```[censored]!```  
+Example input: ```Cunt!```  
+Example output: ```[censored]!```  
 
-Options :  
+Options:  
 The list and the replacement.
 ```php  
 [  
@@ -152,24 +152,24 @@ The list and the replacement.
 
 ### Empty Paragraphs
 
-Class : **Akibatech\Wysiwyg\Modifier\EmptyParagraphs**  
-Description : Delete empty paragraphs from your content.  
+Class: **Akibatech\Wysiwyg\Modifier\EmptyParagraphs**  
+Description: Delete empty paragraphs from your content.  
 
-Example input : ```<p></p><p>Hello</p><p>&nbsp;</p>```  
-Example output : ```<p>Hello</p>```  
+Example input:  ```<p></p><p>Hello</p><p>&nbsp;</p>```  
+Example output: ```<p>Hello</p>```  
 
-Options :  
+Options:  
 None.  
 
 ### Mail to Link
 
-Class : **Akibatech\Wysiwyg\Modifier\MailToLink**  
-Description : Transforms emails adresses in clickable link tag.  
+Class: **Akibatech\Wysiwyg\Modifier\MailToLink**  
+Description: Transforms emails adresses in clickable link tag.  
 
-Example input : ```email@company.com```  
-Example output : ```<a href="mailto:email@company.com">email@company.com</a>```  
+Example input: ```email@company.com```  
+Example output: ```<a href="mailto:email@company.com">email@company.com</a>```  
 
-Options :    
+Options:    
 ```php  
 [  
     // Will replace "@" by "<at>", set to false to disable...  
@@ -179,14 +179,14 @@ Options :
 
 ### NlToBr
 
-Class : **Akibatech\Wysiwyg\Modifier\NlToBr**  
-Description : Replace line breaks into HTML line breaks. Similar to php native function nl2br().  
+Class: **Akibatech\Wysiwyg\Modifier\NlToBr**  
+Description: Replace line breaks into HTML line breaks. Similar to php native function nl2br().  
 
-Example input : ```hello  
+Example input: ```hello  
 world```  
-Example output : ```hello<br>world```  
+Example output: ```hello<br>world```  
 
-Options :    
+Options:    
 ```php  
 [  
     // Linebreak symbol to search. Defaults to "\n"  
@@ -198,13 +198,13 @@ Options :
 
 ### StripTags
 
-Class : **Akibatech\Wysiwyg\Modifier\StripTags**  
-Description : Remove HTML tags from input. Similar to php native function strip_tags().  
+Class: **Akibatech\Wysiwyg\Modifier\StripTags**  
+Description: Remove HTML tags from input. Similar to php native function strip_tags().  
 
-Example input : ```<p>hello world</p>```  
-Example output : ```hello world```  
+Example input: ```<p>hello world</p>```  
+Example output: ```hello world```  
 
-Options :    
+Options:    
 ```php  
 [  
     // Allowed HTML tags (see strip_tags documentation). Defaults, none.  
@@ -214,63 +214,19 @@ Options :
 
 ### URL to Link
 
-Class : **Akibatech\Wysiwyg\Modifier\UrlToLink**  
-Description : Transforms web adresses in clickable link tag.  
+Class: **Akibatech\Wysiwyg\Modifier\UrlToLink**  
+Description: Transforms web adresses in clickable link tag.  
 
-Example input : ```https://www.github.com```  
-Example output : ```<a href="https://www.github.com">https://www.github.com</a>```  
+Example input: ```https://www.github.com```  
+Example output: ```<a href="https://www.github.com">https://www.github.com</a>```  
 
-Options :    
+Options:    
 ```php  
 [  
     // Add a custom class to all generated tags. No defaults.    
     'class' => 'link',  
     // Customize the link target. No defaults.  
     'target' => '_blank'  
-]  
-```
-
-### Treat Tags
-Class : **Akibatech\Wysiwyg\Modifier\TreatTags**  
-Description : A glorified version of strip_tags, giving the user much more control over what happens to different tags
-
-Example input : ```Blah blah.<br><br><strong><br>Further Reading<br></strong><br><a href="http://example.com/">Example website</a><br><a href="javascript:doNefariousStuff()">Claim your fortune!</a><br><script>$(function(){ doNefariousStuff();});</script><br><br><br><br>```  
-Example output : ```Blah blah.<br><br><strong><br>Further Reading<br></strong><br><a href="http://example.com/" target="_new">Example website</a><br><a target="_new">Claim your fortune!</a><br><br><br><br><br>```  
-
-Note: This class uses [```DOMDocument```](http://php.net/manual/en/class.domdocument.php) and [```DOMXPath```](http://php.net/manual/en/class.domxpath.php), so the user will need to make sure those are installed.
-
-Options :    
-```php  
-[  
-    'tags' => [
-        // Enumerate the tags you would like to allow
-        'a' => [
-            // Within each tag, enumerate the attributes you would like to allow
-            'allow_attr' => [
-                'href' => [
-                    // Within each attribute, enumerate the starting strings you would like to allow
-                    'allow_to_begin_with' => ['http', 'mailto']
-                ],
-                'target' => []
-            ],
-            // Enumerate any attributes you would like to add to the tag
-            'insert_attr' => [
-                'target' => '_new'
-            ]
-        ],
-        'br' => [
-            'allow_attr' => []
-        ],
-        'p' => [
-            'allow_attr' => []
-        ],
-        'strong' => [
-            'allow_attr' => []
-        ],
-        'em' => [
-            'allow_attr' => []
-        ]
-    ]
 ]  
 ```
 
@@ -306,5 +262,5 @@ vendor/bin/phpunit
 
 ## Author and Licence
 
-Author: [Marceau Casals](https://marceau.casals.fr)
+Author: [Marceau Casals](https://marceau.casals.fr)  
 Licence: [MIT](https://en.wikipedia.org/wiki/MIT_License)

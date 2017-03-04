@@ -9,8 +9,6 @@ namespace Akibatech\Wysiwyg;
  */
 interface ModifierInterface
 {
-    //-------------------------------------------------------------------------
-
     /**
      * Execute the modifier.
      *
@@ -18,6 +16,4 @@ interface ModifierInterface
      * @return  string
      */
     public function handle($input);
-
-    //-------------------------------------------------------------------------
 }

@@ -11,8 +11,6 @@ use Akibatech\Wysiwyg\AbstractModifier;
  */
 class BbCode extends AbstractModifier
 {
-    //-------------------------------------------------------------------------
-
     /**
      * {@inheritdoc}
      */
@@ -28,8 +26,6 @@ class BbCode extends AbstractModifier
 
         return $output;
     }
-
-    //-------------------------------------------------------------------------
 
     /**
      * Returns the matches table.
@@ -77,8 +73,6 @@ class BbCode extends AbstractModifier
         return $patterns;
     }
 
-    //-------------------------------------------------------------------------
-
     /**
      * {@inheritdoc}
      */
@@ -98,6 +92,4 @@ class BbCode extends AbstractModifier
             'img'    => '<a href="$1"><img src="$1" /></a>'
         ];
     }
-
-    //-------------------------------------------------------------------------
 }

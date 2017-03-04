@@ -11,8 +11,6 @@ use Akibatech\Wysiwyg\AbstractModifier;
  */
 class UrlToLink extends AbstractModifier
 {
-    //-------------------------------------------------------------------------
-
     /**
      * {@inheritdoc}
      */
@@ -23,8 +21,6 @@ class UrlToLink extends AbstractModifier
 
         return $output;
     }
-
-    //-------------------------------------------------------------------------
 
     /**
      * Build the link tag template.
@@ -56,8 +52,6 @@ class UrlToLink extends AbstractModifier
         ]);
     }
 
-    //-------------------------------------------------------------------------
-
     /**
      * {@inheritdoc}
      */
@@ -68,6 +62,4 @@ class UrlToLink extends AbstractModifier
             'target' => null
         ];
     }
-
-    //-------------------------------------------------------------------------
 }
