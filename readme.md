@@ -230,6 +230,50 @@ Options :
 ]  
 ```
 
+### Treat Tags
+Class : **Akibatech\Wysiwyg\Modifier\TreatTags**  
+Description : A glorified version of strip_tags, giving the user much more control over what happens to different tags
+
+Example input : ```Blah blah.<br><br><strong><br>Further Reading<br></strong><br><a href="http://example.com/">Example website</a><br><a href="javascript:doNefariousStuff()">Claim your fortune!</a><br><script>$(function(){ doNefariousStuff();});</script><br><br><br><br>```  
+Example output : ```Blah blah.<br><br><strong><br>Further Reading<br></strong><br><a href="http://example.com/" target="_new">Example website</a><br><a target="_new">Claim your fortune!</a><br><br><br><br><br>```  
+
+Note: This class uses [```DOMDocument```](http://php.net/manual/en/class.domdocument.php) and [```DOMXPath```](http://php.net/manual/en/class.domxpath.php), so the user will need to make sure those are installed.
+
+Options :    
+```php  
+[  
+    'tags' => [
+        // Enumerate the tags you would like to allow
+        'a' => [
+            // Within each tag, enumerate the attributes you would like to allow
+            'allow_attr' => [
+                'href' => [
+                    // Within each attribute, enumerate the starting strings you would like to allow
+                    'allow_to_begin_with' => ['http', 'mailto']
+                ],
+                'target' => []
+            ],
+            // Enumerate any attributes you would like to add to the tag
+            'insert_attr' => [
+                'target' => '_new'
+            ]
+        ],
+        'br' => [
+            'allow_attr' => []
+        ],
+        'p' => [
+            'allow_attr' => []
+        ],
+        'strong' => [
+            'allow_attr' => []
+        ],
+        'em' => [
+            'allow_attr' => []
+        ]
+    ]
+]  
+```
+
 ## Your own modifiers
 
 You can easily extends the preprocessor by adding your own modifiers.  
