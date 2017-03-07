@@ -1,7 +1,8 @@
 # WYSIWYG Preprocessor
 
-WYSIWYG Preprocessor is a PHP library with no dependencies. It's a sort of toolbox for processing your HTML textareas.  
-It is currently in active development (but functionnal and tested).
+[![Build Status](https://travis-ci.org/MarceauKa/WYSIWYG-Preprocessor.svg?branch=master)](https://travis-ci.org/MarceauKa/WYSIWYG-Preprocessor)
+
+WYSIWYG Preprocessor is **a PHP library with no dependencies**. It's a sort of **toolbox for processing your HTML textareas**.  
 
 ## Installation
 
