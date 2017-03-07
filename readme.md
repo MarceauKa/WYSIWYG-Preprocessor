@@ -4,6 +4,23 @@
 
 WYSIWYG Preprocessor is **a PHP library with no dependencies**. It's a sort of **toolbox for processing your HTML textareas**.  
 
+- (Installation)[#installation]
+- (Basic Usage)[#basic-usage]
+- (Customizing modifiers)[#customizing-modifiers]
+- (Modifiers)[#modifiers]
+    - (BBCode)[#bbcode]
+    - (Parse Variables)[#parse-variables]
+    - (Absolute Path)[#absolute-path]
+    - (Words Filter)[#words-filter]
+    - (Empty Paragraphs)[#empty-paragraphs]
+    - (Mail to Link)[#mail-to-link]
+    - (NlToBr)[#nltobr]
+    - (StripTags)[#striptags]
+    - (URL to Link)[#url-to-Link]
+- (Your own modifiers)[#your-own-modifiers]
+- (Unit Tests)[#unit-tests]
+- (Authors)[#authors]
+
 ## Installation
 
 Sources are managed with Composer.
@@ -261,7 +278,7 @@ Make sure you have composer dev dependencies installed and type :
 vendor/bin/phpunit
 ```
 
-## Author and Licence
+## Authors
 
-Author: [Marceau Casals](https://marceau.casals.fr)  
+Author: [Marceau Casals](https://marceau.casals.fr) and [all contributors](https://github.com/MarceauKa/WYSIWYG-Preprocessor/graphs/contributors)  
 Licence: [MIT](https://en.wikipedia.org/wiki/MIT_License)
