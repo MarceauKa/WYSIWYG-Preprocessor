@@ -12,6 +12,7 @@ use Akibatech\Wysiwyg\Modifier\StripTags;
 use Akibatech\Wysiwyg\Modifier\TreatTags;
 use Akibatech\Wysiwyg\Modifier\UrlToLink;
 use Akibatech\Wysiwyg\Modifier\WordsFilter;
+use Akibatech\Wysiwyg\Modifier\YoutubeLinkToIframe;
 use PHPUnit\Framework\TestCase;
 use Akibatech\Wysiwyg\Processor;
 
@@ -251,5 +252,50 @@ class DefaultModifiersTest extends TestCase
         $processor->process($input);
 
         $this->assertEquals($processor->getOutput(), $expected);
+    }
+
+    /**
+     * @test
+     */
+    public function testYoutubeLinkToIframe()
+    {
+        // Default options with long link
+        $input = 'My new video: https://www.youtube.com/watch?v=6wlvYh0h63k !';
+        $expected = 'My new video: <iframe src="https://www.youtube.com/embed/6wlvYh0h63k?controls=1&rel=0&showinfo=1" class="youtube-iframe" width="560" height="315" frameborder="0" allowfullscreen></iframe> !';
+
+        $processor = (new Processor())->addModifier(new YoutubeLinkToIframe)->process($input);
+        $this->assertEquals($expected, $processor->getOutput());
+
+        // Default options with short link
+        $input = 'New video here: https://youtu.be/wBqM2ytqHY4 !';
+        $expected = 'New video here: <iframe src="https://www.youtube.com/embed/wBqM2ytqHY4?controls=1&rel=0&showinfo=1" class="youtube-iframe" width="560" height="315" frameborder="0" allowfullscreen></iframe> !';
+
+        $processor = (new Processor())->addModifier(new YoutubeLinkToIframe)->process($input);
+        $this->assertEquals($expected, $processor->getOutput());
+
+        // With 2 videos
+        $input = 'https://www.youtube.com/watch?v=6wlvYh0h63k and https://youtu.be/wBqM2ytqHY4';
+        $expected = '<iframe src="https://www.youtube.com/embed/6wlvYh0h63k?controls=1&rel=0&showinfo=1" class="youtube-iframe" width="560" height="315" frameborder="0" allowfullscreen></iframe> and <iframe src="https://www.youtube.com/embed/wBqM2ytqHY4?controls=1&rel=0&showinfo=1" class="youtube-iframe" width="560" height="315" frameborder="0" allowfullscreen></iframe>';
+
+        $processor = (new Processor())->addModifier(new YoutubeLinkToIframe)->process($input);
+        $this->assertEquals($expected, $processor->getOutput());
+
+        // With all options customized
+        $input = 'https://youtu.be/6wlvYh0h63k';
+        $expected = '<iframe src="https://www.youtube.com/embed/6wlvYh0h63k?controls=0&rel=1&showinfo=0" class="foo" frameborder="0"></iframe>';
+
+        $modifier = new YoutubeLinkToIframe;
+        $modifier->setOptions([
+            'height'           => null,
+            'width'            => null,
+            'class'            => 'foo',
+            'with_controls'    => false,
+            'with_infos'       => false,
+            'with_suggestions' => true,
+            'allow_fullscreen' => false
+        ]);
+
+        $processor = (new Processor())->addModifier($modifier)->process($input);
+        $this->assertEquals($expected, $processor->getOutput());
     }
 }

@@ -16,7 +16,8 @@ WYSIWYG Preprocessor is **a PHP library with no dependencies**. It's a sort of *
     - [Mail to Link](#mail-to-link)
     - [NlToBr](#nltobr)
     - [StripTags](#striptags)
-    - [URL to Link](#url-to-Link)
+    - [URL to Link](#url-to-link)
+    - [Youtube Link to Iframe](#youtube-link-to-iframe)
 - [Your own modifiers](#your-own-modifiers)
 - [Unit Tests](#unit-tests)
 - [Authors](#authors)
@@ -246,6 +247,34 @@ Options:
     // Customize the link target. No defaults.  
     'target' => '_blank'  
 ]  
+```
+
+### Youtube Link to Iframe
+
+Class: **Akibatech\Wysiwyg\Modifier\YoutubeLinkToIframe**  
+Description: Transforms youtube links (long and shorts) to a embed video player (iframe).  
+
+Example input: ```My new video: https://youtu.be/wBqM2ytqHY4```  
+Example output: ```My new video: <iframe src="https://www.youtube.com/embed/wBqM2ytqHY4?controls=1&rel=0&showinfo=1" class="youtube-iframe" width="560" height="315" frameborder="0" allowfullscreen></iframe>```  
+
+Options:    
+```php  
+[
+    // Custom class added to the player
+    'class'  => 'youtube-iframe',
+    // Custom width (in px) or null
+    'width'  => 560,
+    // Custom height (in px) or null
+    'height' => 315,
+    // Allow fullscreen
+    'allow_fullscreen' => true,
+    // Enable youtube suggestions when video ends
+    'with_suggestions' => false,
+    // Display video info
+    'with_infos' => true,
+    // Display video controls
+    'with_controls' => true
+]
 ```
 
 ## Your own modifiers
